@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClaudioDev</title>
+  </head>
+  <body>
+    
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  background-color: #1b1b1d;
+  color: #000;
+   overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: white;
+    text-decoration: none;
+    
+}
+a:hover {
+    opacity: 1;
+    transition: transform 0.3s ease-in;
+     
+} 
+
+@media (max-width:600px) {
+ .line {
+  font-size: 22px;
+ }}
+.line {
+        border-right: 2px solid rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.75);
+        font-family: "Special Elite", monospace;
+        font-size: 20px;
+        text-align: center;
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        
+      }
+.typing-animation {
+        animation: blinkCursor 500ms steps(50) infinite normal,
+          typing 4s steps(50) 1s normal both;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 12em;
+        }
+      }
+
+      @keyframes blinkCursor {
+        from {
+          border-right-color: rgba(255, 255, 255, 0.75);
+        }
+        to {
+          border-right-color: transparent;
+        }
+      }
+#header {
+    box-sizing: border-box;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #23232e;
+    
+}
+#menu {
+    display: flex;
+    list-style: none;
+    gap: .5rem;
+}
+#menu a {
+    display: block;
+    padding: .5rem;
+}
+#btn {
+    display: none;
+}
+
+@media (max-width:600px) {
+    #btn {
+    display: flex;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    gap: 0.5rem;
+    color: white;
+    visibility: hidden;    
+}
+  #ham {
+    border-top: 2px solid;
+    width: 20px;
+    position: relative;
+    left: 20%;
+    overflow-x: hidden;
+   
+    /*margin: auto;*/
+    
+
+  }
+  #ham::after,
+  #ham::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+  }
+  #nav.active #ham {
+    border-top-color: transparent;
+  }
+  #nav.active #ham::before {
+    transform: rotate(135deg);
+  }
+  #nav.active #ham::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
+    #menu {
+       /* display: none;*/
+       display: block;
+       position: absolute;
+       width: 100%;
+       right: 0;
+       top: 70px;
+       height: 0;
+       transition: .6s;
+       background: #23232e; 
+       z-index: 1000;
+       visibility: hidden;
+       overflow-y: hidden;
+    }
+    #nav.active #menu {
+        visibility: visible;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    } 
+    #menu a{
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+
+/* slider card */
+
+
+
+.slide-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:40%;
+  padding: 40px 0;
+  background-size: 100%;
+  background-size:cover;
+  background-color: #23232e;
+  
+ 
+/*  background: url("https://www.kibrispdr.org/data/959/technology-background-images-hd-25.jpg") no-repeat center center;*/
+
+}
+.slide-content{
+  margin: 0 40px;
+  overflow:visible;
+  border-radius: 25px;
+}
+.card{
+  border-radius: 25px;
+  background-color: #FFF;
+}
+.image-content,
+
+.card1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  margin: 1px;
+}
+
+
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #46506d;
+  border-radius: 25px 25px 0 25px;
+}
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #46506d;
+}
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+.card-image{
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #FFF;
+}
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description{
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+#button{
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: #46506d;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  outline: none;
+  transition:0.3s;
+}
+
+#button:hover{
+    background-color: 	#4169E1;
+    box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1;
+
+}
+
+.git{
+    transition: .3s ease-in;
+}
+
+.git:hover{
+    background-color: 	#151717;
+    box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1;
+
+}
+
+.tec{
+  transition: .3s ease-in;
+  height: 20px;
+  
+}
+
+.tec:hover{
+
+  background-color: 	#151717;
+    box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1;
+
+}
+
+.linkedin{
+    transition: .3s ease-in;
+
+}
+.linkedin:hover{
+    background-color: 	#0e76a8;
+    box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1;
+}
+
+.instagram{
+    transition: .3s ease-in;
+}
+
+.instagram:hover{
+    background-color: 	#515bD4;
+    box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1;
+
+}
+
+.curriculo{
+  transition: .3s ease-in;
+}
+.curriculo:hover{
+  background-color: red;
+  box-shadow: 0 0 5px red, 0 0 25px red, 0 0 50px, 0 0 200px red;
+}
+
+.swiper-navBtn{
+  color: #6E93f7;
+
+}
+.swiper-navBtn:hover{
+  color: #4070F4;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+  font-size: 35px;
+}
+.swiper-button-next{
+  right: 0;
+}
+.swiper-button-prev{
+  left: 0;
+}
+.swiper-pagination-bullet{
+  background-color: #6E93f7;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active{
+  background-color: #4070F4;
+}
+
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+}
+
+
+.moreinfo {
+  display: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  padding: 14px;
+  text-align: left;
+  visibility: visible;
+  transition: .2s;  
+
+}
+
+.finish {
+  text-align: center;
+  background-color: black;
+  font-size: 70%;
+  padding: 15%;
+  min-width:280px ;
+  max-width:3000px ;
+  margin: 10px;
+  border-radius: 14px;
+  visibility: hidden;
+         
+}
+
+.text {
+  top: auto;
+  color: white;
+  font-size: 12px;  
+}
+.init {
+  font-size: 17px;
+}
+ /*
+ .in2 {
+  display: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  padding: 20px;
+  text-align: left;
+  transition: 0.10s;
+ }
+ .in3 {
+  display: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  padding: 20px;
+  text-align: left;
+  transition: 0.10s;
+ }
+ .in4 {
+  display: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  padding: 20px;
+  text-align: left;
+  transition: 0.10s;
+ }
+ .in5 {
+  display: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  padding: 20px;
+  text-align: left;
+  transition: 0.10s;
+ }
+ */
+ .light{
+  border-radius: 15px;
+  width: 15px;
+  padding: 10px;
+  border: solid 1px #23232e;
+  transition: .3s;
+ }
+ .light:hover{
+  background-color: 	#fff;
+    box-shadow: 0 0 5px 	#fff, 0 0 25px 	#fff, 0 0 50px, 0 0 200px 	#fff;
+ }
+
+
+
+.flip {
+  position: relative;
+}
+.flip > .front,
+.flip > .back {
+  display: block;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 0.5s;
+  transition-property: transform, opacity;
+}
+.flip > .front {
+  transform: rotateY(0deg);
+}
+.flip > .back {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(-180deg);
+}
+.flip:hover > .front {
+  transform: rotateY(180deg);
+}
+.flip:hover > .back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+.flip.flip-vertical > .back {
+  transform: rotateX(-180deg);
+}
+.flip.flip-vertical:hover > .front {
+  transform: rotateX(180deg);
+}
+.flip.flip-vertical:hover > .back {
+  transform: rotateX(0deg);
+}
+
+.flip {
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 1em;
+  width: 400px;
+  transition: 2s;
+  
+}
+
+.flip:hover{
+  background-color: 	#4169E1;
+  box-shadow: 0 0 5px 	#4169E1, 0 0 25px 	#4169E1, 0 0 50px, 0 0 200px 	#4169E1
+}
+
+.flip > .front,
+.flip > .back {
+  display: block;
+  color: white;
+  width: inherit;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 290px;
+  padding: 1em 2em;
+  background: #313131;
+  border-radius: 10px;
+}
+.flip > .front p,
+.flip > .back p {
+  font-size: 0.9125rem;
+  line-height: 120%;
+  color: #fff;
+  text-align: left;
+}
+.text-shadow {
+  position: relative;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
+  top: 50%;
+  transform: translateY(50%);
+ /* background:#23232E;
+  border-radius:20px;*/
+  padding: 10px;
+  text-align: center;
+}
+
+
+
+.line {
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "Special Elite", monospace;
+  text-align: center;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+}
+ </style>
+ 
+    
+ <header id="header">
+
+  <button class="light"></button>
+  <a class="line typing-animation" rel="external">Claudio Henrique</a>
+  <nav id="nav">
+      <span id="ham"></span>
+      <button id="btn">Menu</button>
+      <ul id="menu">
+        
+          <li class="git"><a href="https://github.com/claudiohbs"target="_blank" rel="external">GitHub</a></li>
+          <li class="linkedin"><a href="https://www.linkedin.com/in/claudio-henrique-6b4b8a297" target="_blank" rel="external">Linkedin</a></li>
+          <li class="curriculo"><a href="CurrículoBANCO.pdf" download>Currículo</a></li>
+          </li>
+          </ul>
+
+  </nav>
+
+
+</header>
+
+    
+    <div class="slide-container-swiper" >
+      <div class="slide-content">
+          <div class="card-wrapper swiper-wrapper">
+             
+              <div class="card swiper-slide">
+                  <div class="image-content">
+                      <span class="overlay"></span>
+
+                      <div class="card-image">
+                          <img src="https://i.pinimg.com/736x/a4/cc/04/a4cc040d9a21e42707455eaba7ef1989.jpg" alt="" class="card-img">
+                      </div>
+                  </div>
+
+                  <div class="card1" >
+                      <h2 class="name">Quem sou eu?</h2>
+                      <p class="description">Sou um estudante de técnico em Desenvolvimento de Sistemas com paixão por
+                        programação, resolução de problemas, de fácil adaptação e aprendizagem.</p>
+
+                      <button  class="btn1"id="button">Leia Mais</button>
+                  </div>
+                 
+                    <div class="moreinfo">
+                   <p class="path">
+                    Possuo competências sólidas em linguagens de programação como JavaScript,
+                    JAVA e SQL. Possuo experiência na manipulação de banco de dados com
+                    MySQL, redes de computadores e suporte técnico ao usuário. Conhecimentos
+                    avançados em sistemas operacionais: Windows e Linux, e no pacote office
+                    completo.
+              </div>
+
+
+      <div class="swiper-button-next swiper-navBtn"></div>
+      <div class="swiper-button-prev swiper-navBtn"></div>
+      <div class="swiper-pagination"></div>
+  </div>
+
+  <div class="flip" >
+    <div class="front" style="background-image: url(https://i.pinimg.com/736x/ab/47/e4/ab47e4563b55994b5ad6ac6ea2f2e9f1.jpg)">
+       <h1 class="text-shadow">Projeto #01</hi>
+    </div>
+    <div class="back">
+      
+       <p>
+        Eu fiz esse projeto com o intuito de mostrar as tecnologias que foram desenvolvidas durantes as grandes guerras mundiais, tecnologia das quais usamos até hoje e que foram fundamentais para o avanço da sociedade.
+      
+      </div>
+</div>
+<li class="tec"><a href="https://tecguerras.vercel.app/"target="_blank" rel="external">Tec Guerras</a></li>
+
+
+  <header class="finish"id="c3">
+
+    <p class="text">Desenvolvido por: <a href="https://github.com/claudiohbs"target="_blank" rel="external">Claudio Henrique</a></p>
+    
+    
+    
+    </header>
+    
+    
+
+
+
+    <script>
+
+const button = document.getElementById("ham")
+
+function ApareceMenu() {
+    const nave = document.getElementById("nav")
+    nave.classList.toggle('active')
+    
+}
+button.addEventListener('click', ApareceMenu)
+// slider card
+
+
+//Ler mais
+
+
+var botao = document.querySelector(".btn1")
+var div = document.querySelector(".moreinfo")
+
+botao.addEventListener("click", function() {
+
+if(div.style.display === "block") {
+  div.style.display = "none"
+  botao.innerHTML = "Leia Mais"
+  
+}else {
+  div.style.display = "block"
+  botao.innerHTML = "Leia Menos"
+}
+
+})
+const changeColorButton = document.querySelector(".light");
+document.addEventListener("DOMContentLoaded", function() {
+   
+    let isBlack = true;
+
+    // Função para alterar a cor da página entre preto e branco
+    function changePageColor() {
+        document.body.style.backgroundColor = isBlack ? "#fff" : "#1b1b1d";
+        isBlack = !isBlack; // Inverte o estado
+        document.body.style.transition = ".3s"
+
+    
+      }
+
+    // Adiciona um ouvinte de evento para o clique do botão
+    changeColorButton.addEventListener("click", changePageColor, function(){
+    
+      changeColorButton.style.backgroundty = isBlack ? "#fff" : "#000";
+        isBlack = !isBlack; // Inverte o estado
+        //document.body.style.transition = ".3s"/
+
+    });
+
+
+  });
+
+
+  
+
+  
+
+/*
+var b = document.querySelector(".btn2")
+var div2 = document.querySelector(".in2")
+
+b.addEventListener("click", function() {
+
+if(div2.style.display === "block") {
+  div2.style.display = "none"
+  b.innerHTML = "Leia Mais"
+}else {
+  div2.style.display = "block"
+  b.innerHTML = "Leia Menos"
+}
+
+})
+
+var b3 = document.querySelector(".b3")
+var div3 = document.querySelector(".in3")
+
+b3.addEventListener("click", function() {
+
+if(div3.style.display === "block") {
+  div3.style.display = "none"
+  b3.innerHTML = "Leia Mais"
+}else {
+  div3.style.display = "block"
+  b3.innerHTML = "Leia Menos"
+}
+
+})
+
+var b4 = document.querySelector(".b4")
+var div4 = document.querySelector(".in4")
+
+b4.addEventListener("click", function() {
+
+if(div4.style.display === "block") {
+  div4.style.display = "none"
+  b4.innerHTML = "Leia Mais"
+}else {
+  div4.style.display = "block"
+  b4.innerHTML = "Leia Menos"
+}
+
+})
+
+
+var b5 = document.querySelector(".b5")
+var div5 = document.querySelector(".in5")
+
+b5.addEventListener("click", function() {
+
+if(div5.style.display === "block") {
+  div5.style.display = "none"
+  b5.innerHTML = "Leia Mais"
+}else {
+  div5.style.display = "block"
+  b5.innerHTML = "Leia Menos"
+}
+
+})
+*/
+
+</script>
+  </body>
+</html>
